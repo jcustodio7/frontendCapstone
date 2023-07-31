@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+}
+
+.navBar {
+  padding-left: 30px;
+}
+
+.productsJ {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+}
+
+.cardJ {
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+  padding: 10px;
+  margin: 40px 20px;
+}
+
+.product-name {
+  text-transform: uppercase;
+  margin: 10px 0px;
+  font-size: 20px;
+}
+
+.product-price {
+  margin: 10px 0px;
+  padding-bottom: 20px;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.userDropdown {
+  margin-left: auto;
+}
+
+.inputSearch {
+  margin-top: 30px;
+  width: 400px;
+}
+
+/* cart page */
+
+.product-addCart {
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 40px;
+  display: block;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: 15px auto;
+}
+
+.product-addCart:hover {
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.cartIcon {
+  margin-left: 400px;
+}
+
+.cart-items {
+  margin: 30px auto;
+  width: 75%;
+  /* border: 1px solid rgb(160, 81, 81);
+    border-radius: 5px; */
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.cartLists {
+  margin-top: 100px;
+}
+
+.cart-items-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-left: 5%;
+}
+
+.cart-items-name {
+  margin-left: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+  background-color: rgba(201, 131, 131, 0.555);
+  border-radius: 10px;
+}
+
+.cart-items-add {
+  padding-left: 35px;
+  width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: aqua;
+}
+
+.cart-items-remove {
+  padding-left: 35px;
+  width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: aqua;
+}
+
+.cart-items-price {
+  width: 100%;
+  /* background-color: black; */
+}
+
+.cart-items-total-price-name {
+  margin-top: 20px;
+}
+
+/* login page */
+
+.body-login {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  min-height: 100vh;
+  background-image: url("https://mcdn.wallpapersafari.com/medium/74/91/oe1nbC.jpg");
+  background-size: cover;
+}
+
+.wrapper {
+  width: 420px;
+  background: rgba(206, 157, 85, 0.582);
+  border-radius: 50px;
+  padding: 40px;
+}
+
+.login-button {
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  width: 50%;
+  height: 40px;
+  display: block;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: 15px auto;
+  border-radius: 50px;
+}
+
+.loginLogo {
+  margin-top: 10px;
+}
+
+/* add product */
+
+.fontAddProduct {
+  font-family: "Poppins", sans-serif;
+  margin-top: 30px;
+}
+
+.bodyAddProduct {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin: auto;
+  border-radius: 50px;
+  height: 100vh;
+}
+
+.buttonAdd {
+    width: 300px;
+    margin-top: 50px;
+}
+
+.bodyColor{
+    border-radius: 50px;
+    /* background: rgb(134, 155, 153); */
+    /* padding-top: 50px; */
+    height: 500px;
+    width: 100% 
+}
+
+.cart-length {
+    color: black;
+}
+
+.mui-Table {
+  width: 1200px;
+  margin: auto;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.mui-TableAdmin {
+  width: 1200px;
+  margin: auto;
+  height: auto;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.adminClass {
+  height: 100vh;
+}
+ .addProduct {
+  color: black;
+ }
+
+ .addProductButton {
+  margin-bottom: 10px !important;
+ }
+
+ .navBarTexts {
+  color: white;
+ }
+
+ .aboutUsContainer {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 75% !important;
+  margin: auto;
+}
+
+.signUp {
+  margin-left: 65vh!important;
+  width: 500px;
+}
+
+.shopView {
+  height: 100vh;
+}
+
+.shopView1 {
+  height: 100%;
+}
