@@ -39,7 +39,7 @@ const Customers = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/customerLists",
+        "https://ec2-3-106-54-52.ap-southeast-2.compute.amazonaws.com/api/customerLists",
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("customerToken"),

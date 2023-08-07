@@ -47,7 +47,7 @@ const AddProduct = () => {
       formData.append("product_price", data.price);
       formData.append("product_description", data.description);
       let response = await axios.post(
-        "http://127.0.0.1:8000/api/addProduct",
+        "https://ec2-3-106-54-52.ap-southeast-2.compute.amazonaws.com/api/addProduct",
         formData,
         {
           headers: {
