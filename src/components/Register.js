@@ -35,7 +35,7 @@ const Register = () => {
       // console.log(formData)
       try {
         
-        const response = await axios.post("http://127.0.0.1:8000/api/register",
+        const response = await axios.post("https://ec2-3-106-54-52.ap-southeast-2.compute.amazonaws.com/api/register",
           JSON.stringify(formData),
           { headers: { "Content-Type": "application/json" } }
         );
