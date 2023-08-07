@@ -28,93 +28,84 @@ import Toolbar from "@mui/material/Toolbar";
 import logo from "./img/logo.png";
 import { Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const drawerWidth = 240;
 const navItems = ["Home", "About"];
 
 const Login = (props) => {
+  useEffect(() => {
+    if (localStorage.getItem("customerToken")) {
+      navigate("/Home");
+    }
+  });
 
-    useEffect(() => {
-        if (localStorage.getItem("customerToken")) {
-          navigate("/Home");
-        }
-      });
-    
-      // const [name, setName] = useState("");
-      // const [password, setPassword] = useState("");
-      // const [email, setEmail] = useState("");
-      const [error, setError] = useState("");
-      const [formData, setFormData] = useState({
-        name: "",
-        password: "",
-        email: "",
-      });
-    
-      const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-      };
-    
-      const navigate = useNavigate();
-    
-     
+  // const [name, setName] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    password: "",
+    email: "",
+  });
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-      const handleLogin = async (event) => {
+  const navigate = useNavigate();
 
-        event.preventDefault();
-        setError("");
-    
-        if (!validateForm1()) {
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    setError("");
 
-          return;
-        } else {
-          try {
-            const response = await axios.post(
-              "https://ec2-3-106-54-52.ap-southeast-2.compute.amazonaws.com/api/loginCustomer",
-              formData
-            );
-            const token = response.data.token;
-            console.log(response);
-            localStorage.setItem("customerToken", token);
-            localStorage.setItem("customerInfo", JSON.stringify(response));
- 
-            navigate("/Home");
-            toast.success('Successfully logged in', {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              });
-            console.log(response);
+    if (!validateForm1()) {
+      return;
+    } else {
+      try {
+        const response = await axios.post(
+          "https://ec2-3-106-54-52.ap-southeast-2.compute.amazonaws.com/api/loginCustomer",
+          formData
+        );
+        const token = response.data.token;
+        console.log(response);
+        localStorage.setItem("customerToken", token);
+        localStorage.setItem("customerInfo", JSON.stringify(response));
 
-          } catch (error) {
-            let errorMessage = error.response.data.error;
-            setError(errorMessage);
-            console.error(errorMessage);
-          }
-        }
+        navigate("/Home");
+        toast.success("Successfully logged in", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        console.log(response);
+      } catch (error) {
+        let errorMessage = error.response.data.error;
+        setError(errorMessage);
+        console.error(errorMessage);
+      }
+    }
+  };
 
-      };
-    
-      const validateForm1 = () => {
-        if (formData.email === undefined || formData.email === "") {
-          setError("Email is required!");
-          return false;
-        } else if (formData.password === undefined || formData.password === "") {
-          setError("Password is required!");
-          return false;
-        }
-    
-        return true;
-      };
-      
+  const validateForm1 = () => {
+    if (formData.email === undefined || formData.email === "") {
+      setError("Email is required!");
+      return false;
+    } else if (formData.password === undefined || formData.password === "") {
+      setError("Password is required!");
+      return false;
+    }
+
+    return true;
+  };
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -185,11 +176,14 @@ const Login = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/products", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("userToken"),
-        },
-      });
+      const response = await axios.get(
+        "https://ec2-3-106-54-52.ap-southeast-2.compute.amazonaws.com/api/products",
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("userToken"),
+          },
+        }
+      );
       let products = response.data.products;
 
       console.log(products);
@@ -296,45 +290,47 @@ const Login = (props) => {
                   </Link>
                 </Button>
               ))}
-               {isAuthenticated ? (
+              {isAuthenticated ? (
                 <>
-              <Button sx={{ color: "#fff" }} onClick={(e) => handleLogout()}>
-              LOGOUT
-            </Button>
-
-            </>
-              ) : (<>
-                <Button sx={{ color: "#fff" }}>
-                <Link
-                  to="/LoginCustomer"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  LOGIN IN
-                </Link>
-              </Button>
-              <Button sx={{ color: "#fff" }}>
-                <Link
-                  to="/Signup"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  SIGN UP
-                </Link>
-              </Button>
-   
-              </>
+                  <Button
+                    sx={{ color: "#fff" }}
+                    onClick={(e) => handleLogout()}
+                  >
+                    LOGOUT
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button sx={{ color: "#fff" }}>
+                    <Link
+                      to="/LoginCustomer"
+                      style={{ textDecoration: "none", color: "white" }}
+                    >
+                      LOGIN IN
+                    </Link>
+                  </Button>
+                  <Button sx={{ color: "#fff" }}>
+                    <Link
+                      to="/Signup"
+                      style={{ textDecoration: "none", color: "white" }}
+                    >
+                      SIGN UP
+                    </Link>
+                  </Button>
+                </>
               )}
-        <ToastContainer
-position="top-right"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss={false}
-draggable
-pauseOnHover
-theme="light"
-/>
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable
+                pauseOnHover
+                theme="light"
+              />
             </Box>
           </Toolbar>
         </AppBar>
@@ -362,34 +358,38 @@ theme="light"
           <Toolbar />
           <br />
           <div className="signUp">
-        <div >
-        <img style={{width: 250, height:150}} src={logo} alt='react logo'></img>
+            <div>
+              <img
+                style={{ width: 250, height: 150 }}
+                src={logo}
+                alt="react logo"
+              ></img>
 
-          <div> {error && <Alert severity="error">{error}</Alert>} </div>
-          <br />
-          <input
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={(e) => handleChange(e)}
-            className="form-control"
-            placeholder="email"
-          />
-          <br />
-          <input
-            name="password"
-            type="password"
-            value={formData.password}
-            onChange={(e) => handleChange(e)}
-            className="form-control"
-            placeholder="password"
-          />
-          <br />
-          <button onClick={(e) => handleLogin(e)} className="login-button">
-            Login
-          </button>
-        </div>
-      </div>
+              <div> {error && <Alert severity="error">{error}</Alert>} </div>
+              <br />
+              <input
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleChange(e)}
+                className="form-control"
+                placeholder="email"
+              />
+              <br />
+              <input
+                name="password"
+                type="password"
+                value={formData.password}
+                onChange={(e) => handleChange(e)}
+                className="form-control"
+                placeholder="password"
+              />
+              <br />
+              <button onClick={(e) => handleLogin(e)} className="login-button">
+                Login
+              </button>
+            </div>
+          </div>
         </Box>
       </Box>
       {/* <Header /> */}

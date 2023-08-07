@@ -174,8 +174,8 @@ const Shopview = () => {
                         <img
                           style={{ width: 150 }}
                           className="cart-items-image"
-                          src={"http://localhost:8000/" + item.file_path}
-                          // src={dental}
+                          // src={"http://localhost:8000/" + item.file_path}
+                          src={dental}
                           alt={item.name}
                         />
                         <div className="cart-items-name">
@@ -231,8 +231,8 @@ const Shopview = () => {
                 <img
                   className="product-image"
                   style={{ width: 250, height: 200 }}
-                  src={"http://localhost:8000/" + d.file_path}
-                  // src={dental}
+                  // src={"http://localhost:8000/" + d.file_path}
+                  src={dental}
                   alt={d.file_path}
                 />
               </div>

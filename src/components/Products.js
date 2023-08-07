@@ -162,8 +162,8 @@ const Products = () => {
           return [
             <img
               style={{ width: 150 }}
-              src={"http://localhost:8000/" + d.file_path}
-              // src={dental}
+              // src={"http://localhost:8000/" + d.file_path}
+              src={dental}
             ></img>,
             d.product_name,
             d.product_description,

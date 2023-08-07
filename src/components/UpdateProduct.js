@@ -145,8 +145,8 @@ const UpdateProduct = () => {
             <div>
               <img
                 style={{ width: 200 }}
-                src={"http://localhost:8000/" + data.file_path}
-                // src={dental}
+                // src={"http://localhost:8000/" + data.file_path}
+                src={dental}
               ></img>
             </div>
             <br />
